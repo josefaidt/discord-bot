@@ -12,10 +12,15 @@
   "dependencies": {
     "@aws-sdk/client-ssm": "^3.21.0",
     "aws-sdk": "^2.935.0",
+    "discord.js": "^13.1.0",
     "express": "^4.17.1",
+    "express-session": "^1.17.2",
     "fast-glob": "^3.2.5",
+    "memorystore": "^1.6.6",
     "morgan": "^1.10.0",
     "node-fetch": "^2.6.1",
+    "passport": "^0.4.1",
+    "passport-oauth2": "^1.6.0",
     "slash-commands": "^1.4.0",
     "source-map-support": "^0.5.16"
   },

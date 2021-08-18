@@ -4,21 +4,15 @@
     HeaderNav,
     HeaderNavItem,
     HeaderNavMenu,
+    HeaderUtilities,
     SkipToContent,
     Content,
-    SideNav,
-    SideNavItems,
-    SideNavMenu,
-    SideNavMenuItem,
-    SideNavLink,
-    SideNavDivider,
   } from 'carbon-components-svelte'
   import 'carbon-components-svelte/css/all.css'
+  import { user } from '$lib/store'
 
   /** @type {"white" | "g10" | "g80" | "g90" | "g100"} */
   let theme = 'g100'
-
-  // document.documentElement.setAttribute('theme', theme)
 
   let isSideNavOpen = false
 </script>
@@ -28,32 +22,16 @@
     <SkipToContent />
   </div>
 
-  <!-- <HeaderNav>
-    <HeaderNavItem href="/" text="Link 1" />
-    <HeaderNavItem href="/" text="Link 2" />
-    <HeaderNavItem href="/" text="Link 3" />
-    <HeaderNavMenu text="Menu">
-      <HeaderNavItem href="/" text="Link 1" />
-      <HeaderNavItem href="/" text="Link 2" />
-      <HeaderNavItem href="/" text="Link 3" />
-    </HeaderNavMenu>
-  </HeaderNav> -->
+  <HeaderUtilities>
+    <HeaderNav>
+      {#if $user.isLoggedIn}
+        <HeaderNavItem href="/api/logout" text="Logout" />
+      {:else}
+        <HeaderNavItem href="/api/login" text="Login" />
+      {/if}
+    </HeaderNav>
+  </HeaderUtilities>
 </Header>
-
-<!-- <SideNav bind:isOpen="{isSideNavOpen}">
-  <SideNavItems>
-    <SideNavLink text="Link 1" />
-    <SideNavLink text="Link 2" />
-    <SideNavLink text="Link 3" />
-    <SideNavMenu text="Menu">
-      <SideNavMenuItem href="/" text="Link 1" />
-      <SideNavMenuItem href="/" text="Link 2" />
-      <SideNavMenuItem href="/" text="Link 3" />
-    </SideNavMenu>
-    <SideNavDivider />
-    <SideNavLink text="Link 4" />
-  </SideNavItems>
-</SideNav> -->
 
 <Content>
   <slot />
