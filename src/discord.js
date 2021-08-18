@@ -1,6 +1,13 @@
 import fetch from 'node-fetch'
+import { Client, Intents } from 'discord.js'
 import { secrets } from './secrets.js'
 import { bank } from './commands/_bank.js'
+
+export const client = new Client({ intents: [Intents.FLAGS.GUILDS] })
+
+client.on('ready', () => {
+  console.log(`Logged in as ${client.user.tag}!`)
+})
 
 export async function getGuilds() {
   const { DISCORD_TOKEN } = secrets
@@ -168,6 +175,7 @@ export async function addRoleToUser({ guildId, userId, roleId }) {
     if (response.ok && response.status === 204) {
       return true
     }
+    // TODO: handle 403 ?
   } catch (error) {
     throw new Error('Error adding role', error)
   }

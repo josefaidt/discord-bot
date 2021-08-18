@@ -12,6 +12,7 @@
   "dependencies": {
     "@aws-sdk/client-ssm": "^3.21.0",
     "aws-sdk": "^2.935.0",
+    "discord.js": "^13.1.0",
     "express": "^4.17.1",
     "fast-glob": "^3.2.5",
     "morgan": "^1.10.0",
