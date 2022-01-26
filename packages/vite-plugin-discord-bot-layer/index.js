@@ -1,6 +1,7 @@
 import { resolve } from 'node:path'
 import { handler as interact } from '@hey-amplify/handler-interact'
 import { app } from '@hey-amplify/handler-commands'
+import { app as authApp } from '@hey-amplify/oidc-discord'
 
 /**
  * Connect-style middleware handler for Discord bot API layer
@@ -49,6 +50,13 @@ async function DiscordBotLayerPluginHandler(req, res, next) {
       const commands = app()
       req.url = req.url.slice(4)
       commands.handle(req, res, next)
+      return
+    }
+
+    if (req.url.startsWith('/api/auth')) {
+      const auth = authApp()
+      req.url = req.url.replace('/api/auth', '')
+      auth.handle(req, res, next)
       return
     }
 
