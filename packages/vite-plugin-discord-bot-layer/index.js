@@ -10,7 +10,7 @@ import { app as webhookApp } from '@hey-amplify/handler-webhook'
  * @param {import('vite').Connect.NextHandleFunction} next
  */
 async function DiscordBotLayerPluginHandler(req, res, next) {
-  if (!req.url?.startsWith('/api')) {
+  if (!req.url?.startsWith('/api') || req.url?.startsWith('/api/auth')) {
     next()
     return
   }
