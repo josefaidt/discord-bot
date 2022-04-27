@@ -39,27 +39,15 @@
   export let description
 
   export let tags
+  export async function handleUnregisterCommand({ id, name }) {}
 
   const id = registration?.id
 
   async function onDeleteCommand(event) {
     deleteCommandStep = DELETE_STEP_DELETING
-    let data
-    try {
-      const response = await fetch(`/api/commands/delete/${id}`, {
-        method: 'DELETE',
-        body: JSON.stringify({ id }),
-      })
-      if (response.ok && response.status === 200) {
-        data = await response.json()
-        // TODO: improve popping command from list without reload
-        location.reload()
-      }
-    } catch (error) {
-      console.error('Unable to delete command', error)
-    }
+    const response = await handleUnregisterCommand({ id, name })
     deleteCommandStep = DELETE_STEP_INITIAL
-    return data
+    return response
   }
 </script>
 

@@ -32,22 +32,56 @@
     }
     return data
   }
+
+  async function unregisterCommand({ id, name }) {
+    let data
+    try {
+      const response = await fetch(`/api/commands/unregister`, {
+        method: 'DELETE',
+        body: JSON.stringify({ id }),
+      })
+      if (response.ok && response.status === 200) {
+        data = await response.json()
+        // TODO: improve popping command from list without reload
+        // location.reload()
+      }
+      store.notifications.add({
+        kind: 'success',
+        title: `Successfully unregistered ${name}`,
+        subtitle: '',
+      })
+    } catch (error) {
+      console.error('Unable to delete command', error)
+      store.notifications.add({
+        kind: 'error',
+        title: `Error unregistering ${name}`,
+        subtitle: '',
+      })
+    }
+    return data
+  }
 </script>
 
 <Content>
   <Grid noGutter>
     <Row>
       <Column>
-        <Button disabled="{isSyncing}" on:click="{syncCommands}">
-          Sync Commands
-        </Button>
         <section>
-          <h2>Commands:</h2>
+          <header>
+            <h2>Commands:</h2>
+            <Button disabled="{isSyncing}" on:click="{syncCommands}">
+              Sync Commands
+            </Button>
+          </header>
           {#each list as command (command)}
             {@const tags = [command.registration && 'Registered'].filter(
               Boolean
             )}
-            <Command {...command} tags="{tags}" />
+            <Command
+              {...command}
+              tags="{tags}"
+              handleUnregisterCommand="{unregisterCommand}"
+            />
           {/each}
         </section>
       </Column>
@@ -60,5 +94,10 @@
     display: grid;
     grid-auto-flow: row;
     grid-row-gap: var(--cds-spacing-05);
+  }
+
+  section header {
+    display: flex;
+    justify-content: space-between;
   }
 </style>

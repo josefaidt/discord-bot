@@ -3,6 +3,7 @@
 
 <script lang="ts">
   import {
+    Dropdown,
     Header,
     SkipToContent,
     Theme,
@@ -18,6 +19,7 @@
   import 'carbon-components-svelte/css/all.css'
   import { user, notifications } from '$lib/store'
   import type { CarbonTheme } from 'carbon-components-svelte/types/Theme/Theme.svelte'
+  import DiscordServerDropdown from '$lib/DiscordServerDropdown.svelte'
 
   let theme: CarbonTheme = 'g100'
 
@@ -38,7 +40,7 @@
 
     <HeaderUtilities>
       {#if $user}
-        <HeaderGlobalAction aria-label="Settings" icon="{SettingsAdjust}" />
+        <DiscordServerDropdown />
         <HeaderAction
           aria-label="User settings"
           icon="{UserAvatarFilledAlt}"
@@ -46,6 +48,9 @@
           bind:isOpen="{isUserPanelOpen}"
         >
           <HeaderPanelLinks>
+            {#if $user?.isAdmin}
+              <HeaderPanelLink href="/admin">Admin</HeaderPanelLink>
+            {/if}
             <HeaderPanelLink href="/settings">Settings</HeaderPanelLink>
             <HeaderPanelLink href="/logout">Logout</HeaderPanelLink>
           </HeaderPanelLinks>
@@ -82,6 +87,10 @@
 
   :global(.bx--content) {
     background-color: var(--cds-ui-background);
+  }
+
+  :global(.bx--dropdown__wrapper--inline) {
+    grid-gap: 0;
   }
 
   div.ha--notification--container {
