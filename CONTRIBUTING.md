@@ -47,7 +47,7 @@ export default createCommand({
 })
 ```
 
-Save and register the new command with `commands.sync()`
+Save and register the new command with `commands.registerAll()`
 
 **NOTE:** refresh your Discord client and optionally allow up to 30 minutes for commands to show in Discord
 

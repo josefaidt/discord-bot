@@ -33,6 +33,7 @@ const command = createCommand({
   handler: (
     interaction: CommandInteraction
   ): InteractionReplyOptions | string => {
+    console.log('INTERACTION', interaction)
     const [{ value: repository }] = interaction.options.data
     return getRepositoryUrl(repository as string)
   },

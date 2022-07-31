@@ -105,7 +105,7 @@ client.on('messageUpdate', async (oldMessage, newMessage) => {
 client.on('messageCreate', async (message: Message) => {
   if (
     !message.author.bot &&
-    message.channel.type === 'GUILD_TEXT' &&
+    message.channel.type === ChannelType.GuildText &&
     isHelpChannel(message.channel)
   ) {
     const options: StartThreadOptions = {
@@ -175,9 +175,8 @@ client.on('messageCreate', async (message: Message) => {
 
 client.on('interactionCreate', async (interaction) => {
   if (!interaction.isCommand()) return
-  const { commandName } = interaction
-  console.log('Handling interaction for command', commandName)
-  const command = commands.get(commandName)
+  console.log('Handling interaction for command', interaction.commandName)
+  const command = commands.get(interaction.commandName)
   if (!command) {
     await interaction.reply({
       content: `Command not found 🤕`,

@@ -19,3 +19,10 @@ export function isThreadWithinHelpChannel(channel: ThreadChannel) {
     channel.parent?.name.endsWith('-help')
   )
 }
+
+export class ExtendableMap extends Map<string, unknown> {
+  constructor(arrays?: [string, unknown][]) {
+    super()
+    return new Map(arrays)
+  }
+}

@@ -1,9 +1,5 @@
-import * as path from 'node:path'
-import { fileURLToPath } from 'node:url'
-import glob from 'fast-glob'
-import { api } from './api'
+import { api } from '../api'
 import { Routes } from 'discord-api-types/v10'
-import type { RESTPostAPIApplicationCommandsJSONBody } from 'discord-api-types/v10'
 
 export class DiscordCommandMap extends Map<string, DiscordCommand> {
   constructor(commands: DiscordCommand[]) {
@@ -12,19 +8,30 @@ export class DiscordCommandMap extends Map<string, DiscordCommand> {
   }
 }
 
-export interface IDiscordCommandBank extends DiscordCommandMap {
-  handle(context): Promise<string>
-  register(command: RESTPostAPIApplicationCommandsJSONBody): Promise<any>
-  unregister(
-    commandId: string | number,
-    guildId?: string | number
-  ): Promise<any>
-  list(): Promise<any>
-  registerAll(): Promise<any>
+/**
+ * We want to:
+ * - export `config`/`command` and `handler` from command files
+ * - reference properties directly from the config with `command.name` instead of `command.config.name`
+ * - reference handler directly from command with `command.handler`
+ * - wrap commands with a centralized controller that can
+ *  - register all commands
+ *  - register individual command
+ *  - unregister individual command
+ *  - list all commands (+registration)
+ *  - handle commands
+ * - minimal impact to existing code
+ * - author commands with a single API???
+ */
+
+export class DiscordCommandMap extends Map<string, DiscordCommand> {
+  constructor(commands: DiscordCommand[]) {
+    super()
+    return new Map(commands.map((command) => [command.name, command]))
+  }
 }
 
 export class DiscordCommandBank
-  extends DiscordCommandMap
+  extends Map<string, DiscordCommand>
   implements IDiscordCommandBank
 {
   constructor(commands: DiscordCommand[]) {
@@ -92,7 +99,7 @@ export class DiscordCommandBank
 }
 
 export function createDiscordCommandBank(
-  commands: DiscordCommand[]
+  commands: ImportedCommands
 ): DiscordCommandBank {
   return new DiscordCommandBank(commands)
 }
