@@ -1,8 +1,9 @@
-import { PrismaClient } from '@prisma/client'
+import { prisma as db } from '@hey-amplify/db'
 import { ACCESS_LEVELS } from './constants'
 import { features, types as featureTypes } from './features/index'
 
-export const prisma = new PrismaClient()
+export const prisma = db
+
 const DB_INIT_MESSAGE = '[database] init'
 
 export async function init() {

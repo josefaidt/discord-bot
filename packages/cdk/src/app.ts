@@ -5,7 +5,7 @@ import { HeyAmplifyStack } from './stack'
 
 const app = new cdk.App({
   context: {
-    name: 'hey-amplify',
+    name: 'HeyAmplify',
     env: 'main',
   },
 })
