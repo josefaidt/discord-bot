@@ -146,7 +146,13 @@ export async function handler(
 
     // mark the thread as solved
     const title = parseTitle(channel.name)
-    if (await channel.setName(`${PREFIXES.solved}${title}`)) {
+    let renamed
+    try {
+      renamed = await channel.setName(`${PREFIXES.solved}${title}`)
+    } catch (error) {
+      console.error('Unable to rename thread', error)
+    }
+    if (renamed) {
       let updated = false
       try {
         await prisma.question.update({
@@ -181,7 +187,14 @@ export async function handler(
 
     // mark the thread as solved
     const title = parseTitle(channel.name)
-    if (await channel.setName(`${PREFIXES.open}${title}`)) {
+    let renamed
+    try {
+      renamed = await channel.setName(`${PREFIXES.open}${title}`)
+    } catch (error) {
+      console.error('Unable to rename thread', error)
+    }
+
+    if (renamed) {
       try {
         await prisma.question.update({
           where: { threadId: channel.id },
