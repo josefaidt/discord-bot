@@ -11,6 +11,25 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+generator zod {
+  provider                         = "zod-prisma-types"
+  output                           = "./build/zod-types" // default is ./generated/zod
+  useMultipleFiles                 = true // default is false
+  createInputTypes                 = true // default is true
+  createModelTypes                 = true // default is true
+  addInputTypeValidation           = true // default is true
+  addIncludeType                   = true // default is true
+  addSelectType                    = true // default is true
+  validateWhereUniqueInput         = true // default is false
+  createOptionalDefaultValuesTypes = true // default is false
+  createRelationValuesTypes        = true // default is false
+  createPartialTypes               = true // default is false
+  useDefaultValidators             = false // default is true
+  coerceDate                       = false // default is true
+  writeNullishInModelTypes         = true // default is false
+  prismaClientPath                 = "../../generated/client" // default is client output path
+}
+
 model Guild {
   id            String          @id @unique
   createdAt     DateTime        @default(now())
