@@ -75,23 +75,28 @@ export async function getSecretsByPrefix(prefix: SecretKeyPrefixIsh) {
   }
 }
 
-export async function getSecrets(
+export async function getSecrets<T = Record<string, string>>(
   appName: string = PROJECT_NAME,
   envName: string = PROJECT_ENV
-) {
+): Promise<T> {
   const prefix = createSecretKeyPrefix({
     appName: appName,
     envName: envName,
   })
   const secrets = await getSecretsByPrefix(prefix)
+
+  if (!secrets?.length) {
+    throw new Error('No secrets found')
+  }
+
   const result = {}
 
   for (const secret of secrets) {
     const key = secret?.Name?.replace(`${prefix}/`, '')
-    if (key) result[key] = secret.Value
+    if (key) result[key] = secret.Value as string
   }
 
-  return result
+  return result as T
 }
 
 interface Parameters {

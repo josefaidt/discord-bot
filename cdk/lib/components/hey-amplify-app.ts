@@ -67,6 +67,9 @@ export interface HeyAmplifyAppProps {
   subdomain: AmplifyAwsSubdomain | undefined
 }
 
+/**
+ * @deprecated
+ */
 export class HeyAmplifyApp extends Construct {
   private readonly appName: string = this.node.tryGetContext('name')
   private readonly envName: string = this.node.tryGetContext('env')
@@ -237,7 +240,7 @@ export class HeyAmplifyApp extends Construct {
       // add Web Application Firewall (WAF)
       webAclId: new WAF(this, 'WAFCloudFront', {
         name: 'WAFCloudFront',
-      }).attrArn,
+      }).attrArn, // should this be 'ref'? https://www.gravitywell.co.uk/insights/deploying-applications-to-ecs-fargate-with-aws-cdk/
     })
 
     for (const listener of albFargateService.loadBalancer.listeners) {

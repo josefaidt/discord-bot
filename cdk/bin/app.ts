@@ -1,15 +1,11 @@
 import 'source-map-support/register.js'
 import { getSecrets } from '@hey-amplify/support'
 import * as cdk from 'aws-cdk-lib'
-import { HeyAmplifyStack } from '../lib/stack'
-import { pkg } from '../lib/pkg'
+import { HeyAmplifyStack } from '../lib/stacks/index'
+import { DEFAULT_CONTEXT } from '../lib/constants'
 
 const app = new cdk.App({
-  context: {
-    name: 'hey-amplify',
-    env: 'main',
-    version: pkg.version,
-  },
+  context: DEFAULT_CONTEXT,
 })
 
 const name = app.node.tryGetContext('name')
@@ -29,12 +25,9 @@ new HeyAmplifyStack(app, `${name}-${env}`, {
     account: process.env.CDK_DEFAULT_ACCOUNT,
     region: process.env.CDK_DEFAULT_REGION,
   },
-  // stack relies on `subdomain` being truthy to determine if it should create a subdomain
-  subdomain:
-    Object.keys(setup).length > 0
-      ? {
-          hostedZoneName: setup.HOSTED_ZONE_NAME,
-          hostedZoneId: setup.HOSTED_ZONE_ID,
-        }
-      : undefined,
+  // stack relies on a preconfigured Route53 hosted zone
+  subdomain: {
+    hostedZoneName: setup.HOSTED_ZONE_NAME,
+    hostedZoneId: setup.HOSTED_ZONE_ID,
+  },
 })

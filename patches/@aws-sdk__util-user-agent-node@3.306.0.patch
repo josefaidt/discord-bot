@@ -1,28 +1,28 @@
 diff --git a/dist-es/index.js b/dist-es/index.mjs
-similarity index 97%
+similarity index 95%
 rename from dist-es/index.js
 rename to dist-es/index.mjs
-index 6bc581180e42245fbd62e11e2d924735b5f1936e..590b8f425ea9d51ab19f5c2c2071b5b373964a58 100644
+index 8923a9a0f7a97984eba93931fc10ea3fea809e60..bfb0de886224eec903fd2e65f61019eb337ecfcb 100644
 --- a/dist-es/index.js
 +++ b/dist-es/index.mjs
-@@ -2,7 +2,7 @@ import { __awaiter, __generator, __read, __spreadArray } from "tslib";
+@@ -1,7 +1,7 @@
  import { loadConfig } from "@aws-sdk/node-config-provider";
  import { platform, release } from "os";
  import { env, versions } from "process";
 -import { isCrtAvailable } from "./is-crt-available";
 +import { isCrtAvailable } from "./is-crt-available.mjs";
- export var UA_APP_ID_ENV_NAME = "AWS_SDK_UA_APP_ID";
- export var UA_APP_ID_INI_NAME = "sdk-ua-app-id";
- export var defaultUserAgent = function (_a) {
+ export const UA_APP_ID_ENV_NAME = "AWS_SDK_UA_APP_ID";
+ export const UA_APP_ID_INI_NAME = "sdk-ua-app-id";
+ export const defaultUserAgent = ({ serviceId, clientVersion }) => {
 diff --git a/dist-es/is-crt-available.js b/dist-es/is-crt-available.mjs
 similarity index 100%
 rename from dist-es/is-crt-available.js
 rename to dist-es/is-crt-available.mjs
 diff --git a/package.json b/package.json
-index ab8dfa7e617fb3baf452d1f8cdab4ac9c450083b..196ad3a4810e90ae87415ea21288a42bf65c69d0 100644
+index fef1471213a0ed7757548775435e2d31e86006bf..c4d228d93c8a103a716bc0491d3abb512ee4e5e1 100644
 --- a/package.json
 +++ b/package.json
-@@ -11,7 +11,7 @@
+@@ -12,7 +12,7 @@
      "test": "jest"
    },
    "main": "./dist-cjs/index.js",

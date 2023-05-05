@@ -32,6 +32,7 @@ export interface SupportBoxProps {
 
 /**
  * The support box is used for accessing filesystem and performing manual database migrations
+ * @deprecated
  */
 export class SupportBox extends Construct {
   private readonly appName: string = this.node.tryGetContext('name')

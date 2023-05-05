@@ -1,2 +1,20 @@
-import { fileURLToPath } from 'node:url'
-export const PROJECT_ROOT = fileURLToPath(new URL('../..', import.meta.url))
+export const REQUIRED_SECRETS = [
+  'DISCORD_BOT_TOKEN',
+  'DISCORD_APP_ID',
+  'DISCORD_PUBLIC_KEY',
+  'DISCORD_AUTH_CLIENT_ID',
+  'DISCORD_AUTH_CLIENT_SECRET',
+  'DISCORD_WEBHOOK_URL_RELEASES',
+  'GITHUB_WEBHOOK_SECRET',
+  'GITHUB_APP_ID',
+  'GITHUB_CLIENT_ID',
+  'GITHUB_CLIENT_SECRET',
+  'GITHUB_PRIVATE_KEY',
+  'NEXTAUTH_SECRET',
+] as const
+
+export const DEFAULT_CONTEXT = {
+  name: 'heyamplify',
+  env: 'default',
+  version: '0.0.0',
+} as const
