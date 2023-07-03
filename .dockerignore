@@ -1,5 +1,5 @@
+# no node_modules
 node_modules
-**/node_modules
 
 # ignore other packages in monorepo
 /cdk
@@ -9,15 +9,18 @@ node_modules
 .vscode
 
 # ignore git
-.git*
 .github
 .git-hooks
 
 # no dotfiles in general
 .*
+# except npmrc
+!.npmrc
 
 # no builds
-**/build
+/build
+/apps/*/build
+/packages/*/build
 
 # no logs
 *.log

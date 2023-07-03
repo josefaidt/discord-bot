@@ -1,9 +1,8 @@
 #syntax=docker/dockerfile:1.4
-# ARG PLATFORM="linux/amd64"
-ARG NODE_VERSION="18.14.2"
+ARG NODE_VERSION="18.15.0"
 ARG ALPINE_VERSION="3.17"
-FROM node:${NODE_VERSION}-alpine${ALPINE_VERSION} as pnpm-builder
-ARG PNPM_VERSION="7.30.0"
+FROM --platform=linux/amd64 node:${NODE_VERSION}-alpine${ALPINE_VERSION} as pnpm-builder
+ARG PNPM_VERSION="8.4.0"
 # for turbo - https://turbo.build/repo/docs/handbook/deploying-with-docker#example
 RUN apk add --no-cache libc6-compat
 RUN apk update
@@ -16,7 +15,7 @@ COPY pnpm*.yaml ./
 COPY patches ./patches
 # mount pnpm store as cache & fetch dependencies
 RUN --mount=type=cache,id=pnpm-store,target=/root/.local/share/pnpm-store \
-  pnpm fetch 
+  pnpm fetch
 
 # build workspace
 FROM pnpm-builder AS workspace
@@ -39,6 +38,6 @@ RUN --mount=type=secret,id=env,required=true,target=/workspace/.env \
   pnpm run build
 # RUN pnpm run build
 # deploy app
-RUN pnpm --filter ./apps/bot.amplify.aws deploy ./build/bot.amplify.aws
+RUN pnpm --filter ./apps/bot.amplify.aws deploy --prod ./build/bot.amplify.aws
 # deploy bot
-RUN pnpm --filter ./apps/discord-bot deploy ./build/discord-bot
+RUN pnpm --filter ./apps/discord-bot deploy --prod ./build/discord-bot

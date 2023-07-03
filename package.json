@@ -21,7 +21,7 @@
     "setup-test": "echo 'no setup required :)'",
     "studio": "prisma studio",
     "docker-build-workspace": "sh ./scripts/docker-build-workspace.sh",
-    "docker-build-apps": "docker compose build discord-bot discord-bot-frontend",
+    "docker-build-apps": "sh ./scripts/docker-build-apps.sh",
     "docker-build": "pnpm docker-build-workspace && pnpm docker-build-apps"
   },
   "devDependencies": {

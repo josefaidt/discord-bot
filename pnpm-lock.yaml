@@ -185,6 +185,45 @@ importers:
       vite: 3.1.3
       vite-node: 0.23.4
 
+  packages/cdk:
+    devDependencies:
+      '@hey-amplify/type-helpers':
+        specifier: workspace:*
+        version: link:../type-helpers
+      '@types/node':
+        specifier: 20.0.0
+        version: 20.0.0
+      '@types/uuid':
+        specifier: ^9.0.1
+        version: 9.0.1
+      aws-cdk:
+        specifier: 2.78.0
+        version: 2.78.0
+      aws-cdk-lib:
+        specifier: 2.78.0
+        version: 2.78.0(constructs@10.2.16)
+      constructs:
+        specifier: 10.2.16
+        version: 10.2.16
+      psecrets:
+        specifier: ^0.3.1
+        version: 0.3.1(typescript@5.0.4)
+      source-map-support:
+        specifier: ^0.5.21
+        version: 0.5.21
+      typescript:
+        specifier: ^5.0.4
+        version: 5.0.4
+      uuid:
+        specifier: ^9.0.0
+        version: 9.0.0
+      vite:
+        specifier: ^4.3.5
+        version: 4.3.5(@types/node@18.16.3)(sass@1.62.0)
+      vite-node:
+        specifier: ^0.31.0
+        version: 0.31.0(@types/node@20.0.0)
+
   packages/constants:
     specifiers:
       tsup: ^6.7.0
@@ -4290,7 +4329,6 @@ packages:
 
   /ieee754/1.2.1:
     resolution: {integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==}
-    dev: false
 
   /ignore/5.2.0:
     resolution: {integrity: sha512-CmxgYGiEPCLhfLnpPp1MoRmifwEIOgjcHXxOBjv7mY96c+eWScsOP9c112ZyLdWHi0FxHjI+4uVhKYp/gcdRmQ==}
@@ -6914,4 +6952,3 @@ packages:
 
   /zod/3.21.4:
     resolution: {integrity: sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw==}
-    dev: false
