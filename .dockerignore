@@ -16,11 +16,16 @@ node_modules
 .*
 # except npmrc
 !.npmrc
+# except gitignore
+!.gitignore
 
 # no builds
 /build
 /apps/*/build
 /packages/*/build
+
+# no turbo builds
+/out
 
 # no logs
 *.log
