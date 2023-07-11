@@ -24,17 +24,17 @@
     "discord.js": "^14.9.0"
   },
   "devDependencies": {
-    "@hey-amplify/constants": "workspace:*",
-    "@hey-amplify/features": "workspace:*",
-    "@hey-amplify/github": "workspace:*",
-    "@hey-amplify/type-helpers": "workspace:*",
-    "@hey-amplify/prisma-client": "workspace:*",
+    "@hey-amplify/constants": "*",
+    "@hey-amplify/features": "*",
+    "@hey-amplify/github": "*",
+    "@hey-amplify/type-helpers": "*",
+    "@hey-amplify/prisma-client": "*",
     "tsup": "^6.7.0",
     "typescript": "^5.0.4",
     "vite": "^4.2.1",
     "vitest": "^0.29.8"
   },
   "peerDependencies": {
-    "@hey-amplify/prisma-client": "workspace:*"
+    "@hey-amplify/prisma-client": "*"
   }
 }

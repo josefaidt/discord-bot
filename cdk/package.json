@@ -8,7 +8,7 @@
     "deploy-github-actions": "cdk deploy --app \"vite-node bin/app-github-actions.ts\""
   },
   "devDependencies": {
-    "@hey-amplify/support": "workspace:*",
+    "@hey-amplify/support": "*",
     "@types/node": "18.7.16",
     "@types/uuid": "^9.0.1",
     "aws-cdk": "2.41.0",

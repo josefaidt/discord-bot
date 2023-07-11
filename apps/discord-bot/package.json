@@ -9,8 +9,8 @@
     "dev": "vite-node discord-bot.ts"
   },
   "dependencies": {
-    "@hey-amplify/discord": "workspace:*",
-    "@hey-amplify/prisma-client": "workspace:^1.0.0",
+    "@hey-amplify/discord": "*",
+    "@hey-amplify/prisma-client": "*",
     "discord.js": "^14.9.0",
     "zod": "^3.21.4"
   },

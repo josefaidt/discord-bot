@@ -9,8 +9,7 @@
     "dev": "vite",
     "build": "vite build",
     "test": "vitest",
-    "coverage": "vitest run --coverage",
-    "prepare": "svelte-kit sync"
+    "coverage": "vitest run --coverage"
   },
   "dependencies": {
     "@auth/core": "^0.5.1",
@@ -18,7 +17,7 @@
     "@aws-crypto/sha256-js": "^4.0.0",
     "@carbon/styles": "^1.26.0",
     "@discordjs/rest": "^1.7.0",
-    "@hey-amplify/prisma-client": "workspace:*",
+    "@hey-amplify/prisma-client": "*",
     "@next-auth/prisma-adapter": "^1.0.5",
     "@octokit/auth-app": "^4.0.9",
     "@octokit/graphql": "^5.0.5",
@@ -35,11 +34,11 @@
   "devDependencies": {
     "@carbon/charts": "^1.11.7",
     "@carbon/charts-svelte": "^1.11.7",
-    "@hey-amplify/constants": "workspace:*",
-    "@hey-amplify/discord": "workspace:*",
-    "@hey-amplify/features": "workspace:*",
-    "@hey-amplify/github": "workspace:*",
-    "@hey-amplify/support": "workspace:*",
+    "@hey-amplify/constants": "*",
+    "@hey-amplify/discord": "*",
+    "@hey-amplify/features": "*",
+    "@hey-amplify/github": "*",
+    "@hey-amplify/support": "*",
     "@sveltejs/adapter-node": "1.2.3",
     "@sveltejs/kit": "1.15.2",
     "@types/cookie": "^0.5.1",

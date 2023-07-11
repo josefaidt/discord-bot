@@ -1,15 +1,19 @@
 {
   "name": "@aws-amplify/discord-bot",
   "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
   "version": "1.1.4",
   "license": "Apache-2.0",
   "private": true,
   "scripts": {
     "start-db": "docker compose up db db-admin",
-    "start-frontend": "pnpm --filter @aws-amplify/discord-bot-frontend run start",
-    "start-bot": "pnpm --filter @aws-amplify/discord-bot run start",
+    "start-frontend": "npm run --workspace @aws-amplify/discord-bot-frontend start",
+    "start-bot": "npm run --workspace @aws-amplify/discord-bot start",
     "stop-db": "docker compose down",
-    "db": "pnpm start-db -d && pnpm push-db && pnpm studio && pnpm stop-db",
+    "db": "npm run start-db -d && npm run push-db && npm run studio && npm run stop-db",
     "dev": "turbo run dev",
     "build": "turbo run build",
     "check": "prettier --check .",
@@ -17,18 +21,18 @@
     "test": "turbo run test",
     "push-db": "prisma db push",
     "seed-db": "prisma db seed",
-    "setup-dev": "pnpm install && pnpm start-db --detach && pnpm push-db",
+    "setup-dev": "npm install && npm run start-db --detach && npm run push-db",
     "setup-test": "echo 'no setup required :)'",
     "studio": "prisma studio",
     "docker-build-workspace": "sh ./scripts/docker-build-workspace.sh",
     "docker-build-apps": "sh ./scripts/docker-build-apps.sh",
-    "docker-build": "pnpm docker-build-workspace && pnpm docker-build-apps"
+    "docker-build": "npm run docker-build-workspace && npm run docker-build-apps"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.5.1",
     "@commitlint/config-conventional": "^17.4.4",
-    "@hey-amplify/scripts": "workspace:*",
-    "@hey-amplify/support": "workspace:*",
+    "@hey-amplify/scripts": "*",
+    "@hey-amplify/support": "*",
     "@types/node": "^18.15.11",
     "@types/prettier": "^2.7.2",
     "@typescript-eslint/eslint-plugin": "^5.57.1",
@@ -46,8 +50,7 @@
     "vite-node": "^0.29.8"
   },
   "engines": {
-    "node": ">=18.0.0",
-    "pnpm": ">=7.29.3"
+    "node": ">=18.0.0"
   },
   "prisma": {
     "schema": "./packages/prisma-client/schema.prisma",
@@ -106,15 +109,6 @@
     "rules": {
       "@typescript-eslint/prefer-ts-expect-error": "warn",
       "@typescript-eslint/no-non-null-assertion": "off"
-    }
-  },
-  "packageManager": "pnpm@8.6.6",
-  "pnpm": {
-    "peerDependencyRules": {
-      "ignoreMissing": [
-        "react",
-        "react-dom"
-      ]
     }
   },
   "lint-staged": {

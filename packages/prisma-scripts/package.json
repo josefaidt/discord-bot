@@ -11,9 +11,9 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^7.6.0",
-    "@hey-amplify/constants": "workspace:*",
-    "@hey-amplify/discord": "workspace:*",
-    "@hey-amplify/features": "workspace:*",
-    "@hey-amplify/prisma-client": "workspace:*"
+    "@hey-amplify/constants": "*",
+    "@hey-amplify/discord": "*",
+    "@hey-amplify/features": "*",
+    "@hey-amplify/prisma-client": "*"
   }
 }

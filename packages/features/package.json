@@ -17,8 +17,8 @@
     "build": "tsup"
   },
   "dependencies": {
-    "@hey-amplify/constants": "workspace:*",
-    "@hey-amplify/prisma-client": "workspace:*"
+    "@hey-amplify/constants": "*",
+    "@hey-amplify/prisma-client": "*"
   },
   "devDependencies": {
     "tsup": "^6.7.0",

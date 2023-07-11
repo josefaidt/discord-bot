@@ -17,8 +17,8 @@
     "build": "tsup"
   },
   "dependencies": {
-    "@hey-amplify/constants": "workspace:*",
-    "@hey-amplify/prisma-client": "workspace:*",
+    "@hey-amplify/constants": "*",
+    "@hey-amplify/prisma-client": "*",
     "@octokit/auth-app": "^4.0.9",
     "@octokit/graphql": "^5.0.5",
     "@octokit/rest": "^19.0.7"
