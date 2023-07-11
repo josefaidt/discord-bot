@@ -38,9 +38,9 @@ export default defineConfig(({ mode }) => {
     },
     optimizeDeps: {
       include: [
-        '@carbon/charts',
-        '@hey-amplify/prisma-client',
-        '@hey-amplify/discord',
+        // '@carbon/charts',
+        // '@hey-amplify/prisma-client',
+        // '@hey-amplify/discord',
       ],
     },
     plugins: [sveltekit()],

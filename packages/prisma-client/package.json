@@ -5,11 +5,12 @@
   "version": "1.0.0",
   "exports": {
     ".": {
-      "default": "./build/generated/client/index.js",
+      "require": "./build/generated/client/index.js",
+      "import": "./build/generated/client/index.mjs",
       "types": "./build/generated/client/index.d.ts"
     },
     "./package.json": "./package.json",
-    "./schema.prisma": "./schema.prisma"
+    "./schema.prisma": "./build/generated/client/schema.prisma"
   },
   "types": "./build/generated/client/index.d.ts",
   "scripts": {
@@ -17,9 +18,9 @@
     "prepare": "prisma generate"
   },
   "dependencies": {
-    "@prisma/client": "^4.12.0"
+    "@prisma/client": "4.15.0-integration-feat-client-esm.27"
   },
   "devDependencies": {
-    "prisma": "^4.12.0"
+    "prisma": "4.15.0-integration-feat-client-esm.27"
   }
 }
