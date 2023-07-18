@@ -1,5 +1,4 @@
 {
-  "name": "@aws-amplify/discord-bot",
   "type": "module",
   "version": "1.1.4",
   "license": "Apache-2.0",
@@ -12,6 +11,7 @@
     "db": "pnpm start-db -d && pnpm push-db && pnpm studio && pnpm stop-db",
     "dev": "turbo run dev",
     "build": "turbo run build",
+    "build-docker": "sh ./scripts/build-docker.sh",
     "check": "prettier --check .",
     "lint": "eslint .",
     "test": "turbo run test",
@@ -19,10 +19,7 @@
     "seed-db": "prisma db seed",
     "setup-dev": "pnpm install && pnpm start-db --detach && pnpm push-db",
     "setup-test": "echo 'no setup required :)'",
-    "studio": "prisma studio",
-    "docker-build-workspace": "sh ./scripts/docker-build-workspace.sh",
-    "docker-build-apps": "sh ./scripts/docker-build-apps.sh",
-    "docker-build": "pnpm docker-build-workspace && pnpm docker-build-apps"
+    "studio": "prisma studio"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.5.1",
@@ -57,6 +54,7 @@
     "tabWidth": 2,
     "bracketSpacing": true,
     "singleQuote": true,
+    "htmlWhitespaceSensitivity": "strict",
     "printWidth": 80,
     "useTabs": false,
     "semi": false,
