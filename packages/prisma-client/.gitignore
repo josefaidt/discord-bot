@@ -1,0 +1,4 @@
+# local data
+/data
+# prisma client
+/src/generated

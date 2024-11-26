@@ -1,0 +1,24 @@
+{
+  "name": "@aws-amplify/discord-bot-prisma-client",
+  "type": "commonjs",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "prepare": "prisma generate",
+    "build": "prisma generate"
+  },
+  "exports": {
+    ".": {
+      "node": "./build/generated/client/index.js",
+      "types": "./build/generated/client/index.d.ts"
+    },
+    "./package.json": "./package.json",
+    "./schema.prisma": "./build/generated/client/schema.prisma"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.22.0"
+  },
+  "devDependencies": {
+    "prisma": "^5.22.0"
+  }
+}

@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient } from '@aws-amplify/discord-bot-prisma-client'
 import { ACCESS_LEVELS, FEATURE_TYPES } from './constants'
 import { integrations, types as featureTypes } from './features/index'
 import { createCommandFeatures } from './discord/commands'
